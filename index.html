@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FO | Product Preview Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+    <audio id="sound">
+    <source src="images/notification-muffled-pop-smartsound-fx-1-00-00.mp3" type="audio/mpeg" alt="">
+        no support
+    </audio>
+    <main>
+        <div class="notification">
+            <img src="images/icon-cart.svg" alt="" height="20"/>
+            <p class="notification__text">
+                <span class="noticiation__add-to-cart">0</span>x Item<span class="pl" alt=""></span> added
+            </p>    
+        </div>
+        <article class="perfume">
+            <div class="perfume__image" alt="decoration"></div>
+            <section class="perfume__content">
+                <div class="perfume__inner-container">
+                    <h1 class="perfume__category">
+                        Perfume
+                    </h1>
+                    <h2 class="perfume__title">
+                        My Burberry <br/>Eu de Parfum
+                    </h2>
+                    <p class="perfume__description">
+                        With a blend of fresh and floral scents, it creates a unique and captivating aroma that is perfect for any occasion.
+                    </p>
+                    <div class="perfume__price-container">
+                        <p class="perfume__current-price">
+                            &pound;88.00
+                        </p>
+                        <p class="perfume__outdated-price">
+                            &pound;110.00
+                        </p>
+                    </div>
+                    <button class="perfume__add-to-cart">Add to Cart</button>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <script>
+        const notification = document.querySelector('.notification');
+        const notificationText = document.querySelector('.noticiation__add-to-cart');
+        const btn = document.querySelector('.perfume__add-to-cart');
+        const pl = document.querySelector('.pl');
+        const sound = document.querySelector('#sound');
+
+        let num = 0;
+        let play = 0;
+
+        btn.addEventListener('click', () =>{
+            notification.classList.add('notification__show');
+            num += 1;
+            play += 1;
+            notificationText.textContent = num.toString();
+            checkPlay();
+            
+            function countTimer(){
+                timer += 1;
+            }
+        });
+
+        function checkPlay(){
+            if(play <= 1){
+                sound.play();
+            } else {
+                sound.pause();
+            }
+        }
+
+    </script>
+</body>
+</html>

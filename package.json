@@ -1,0 +1,10 @@
+{
+  "name": "3-product-preview-card",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "node:sass": "node-sass style.scss style.css -w"
+  },
+  "author": "Furkan O",
+  "license": "MIT"
+}

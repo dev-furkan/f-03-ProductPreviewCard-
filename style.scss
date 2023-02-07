@@ -1,0 +1,258 @@
+$col__white: hsl(0, 0%, 100%);
+$col__lightCoffee: hsl(32, 65%, 62%);
+$col__aurometal: hsla(228, 12%, 48%, 1);
+$col__gunmetal: hsla(212, 21%, 14%, 1);
+$col__deepAquaMarine: hsla(157, 36%, 37%, 1);
+$col__deepPurple: hsl(258, 86%, 34%);
+$col__chromeBlack: hsl(216, 100%, 4%);
+
+$br__radius: 0.625rem; //10px 
+
+$ff__fraunces: 'Fraunces', serif;
+$ff__montserrat: 'Montserrat', sans-serif;
+
+$fs__prodcut-category: 0.75rem; //12px
+$fs__product-title: 2rem;
+$fs__product-description: 0.875rem;
+$fs__product-currentPrice: 2rem;
+$fs__product-outdatedPrice: 0.81rem;
+$fs__product-addToCart: 0.875rem;
+
+
+@mixin font($family, $size , $weight, $color){
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+
+@keyframes notification{
+    from{
+        opacity: 0;
+        top: -100%;
+    }
+    to{
+        opacity: 1;
+        top: 20px
+    }
+}
+
+// Furkan's custom reset
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: none;
+  overflow-wrap: break-word;
+}
+
+a:link,
+a:hover{
+    text-decoration: none;
+    display: inline-block;
+}
+
+html, body {
+  height: 100%;
+}
+body,
+main{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, 
+button, 
+textarea, 
+select {
+  font: inherit;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+ol,
+ul{
+    list-style: none;
+}
+
+main{
+    position: relative;
+    top: 0;
+    margin: 0 auto;
+    max-width: 1400px;
+    min-height: 100%;
+    padding: 28px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("images/background-mobile.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.notification{
+    position: absolute;
+    top: -100%;
+    background: $col__deepAquaMarine;
+    color: $col__white;
+    padding: 10px;
+    border-radius: $br__radius;
+    font-family: $ff__montserrat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.notification__show{
+    animation: notification 1s cubic-bezier(0.02, 1.21, 1, 1) forwards;
+}
+
+.perfume{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    background-color: $col__white;
+    border-radius: $br__radius;
+    overflow: hidden;
+    box-shadow: 10px 10px 15px #333;
+
+    .perfume__image{
+        background-image: url("images/perfume_mobile.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center 70%;
+        min-height: 15rem;
+        overflow: hidden;
+    }
+}
+
+.perfume__content{
+    padding: 1.5rem;
+    display: flex;
+
+    .perfume__inner-container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}
+
+.perfume__inner-container{
+    display: flex;
+    .perfume__category{
+        @include font($ff__montserrat, $fs__prodcut-category, 500, $col__aurometal);
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        margin-bottom: 0.75rem;
+        text-shadow: -2px -1px 9px  #333;
+    }
+    .perfume__title{
+        @include font($ff__fraunces, $fs__product-title, 700, transparent);
+        background-color: $col__gunmetal;
+        background-clip: text;
+        -webkit-background-clip: text;  
+    }
+    .perfume__description{
+        @include font($ff__montserrat, $fs__product-description, 500, $col__aurometal);
+        line-height: 23px;
+        margin-bottom: 1.5rem;
+    }
+    .perfume__price-container{
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 194px;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.25rem;
+    }
+    .perfume__current-price{
+        @include font($ff__fraunces, $fs__product-currentPrice, 700, $col__deepPurple);
+    }
+    .perfume__outdated-price{
+        @include font($ff__montserrat, $fs__product-outdatedPrice, 500, $col__aurometal);
+        text-decoration: line-through;
+    }
+    .perfume__add-to-cart{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 0.75rem;
+        position: relative;
+        top: 0;
+        background-color: $col__deepPurple;
+        min-height: 3rem;
+        border-radius: $br__radius;
+        border: none;
+        @include font($ff__montserrat, $fs__product-addToCart, 700, $col__white);
+        -webkit-box-shadow: 5px 10px 10px 2px hsla(0, 0%, 20%, .7);
+        -moz-box-shadow: 5px 10px 10px 2px hsla(0, 0%, 20%, .7);
+        box-shadow: 5px 10px 10px 2px hsla(0, 0%, 20%, .7);
+        &:hover{
+            cursor: pointer;
+            background-color: darken($col__deepPurple, 10%);
+            -webkit-box-shadow: 5px 10px 10px 2px hsla(0, 0%, 20%, .7);
+            -moz-box-shadow: 5px 10px 10px 2px hsla(0, 0%, 20%, .7);
+            box-shadow: 1px 3px 10px 2px hsla(0, 0%, 20%, .7);
+        }
+        &::before{
+            content: url("images/icon-cart.svg");
+            display: block;
+            position: relative;
+            top: 2px;
+        }
+    }
+}
+
+
+@media (min-width: 600px){
+
+    main{
+        background-image: url("images/bg-desktop.jpg");
+    }
+
+    .perfume{
+        flex-direction: row;
+        min-height: 450px;
+    }
+
+    .perfume__image,
+    .perfume__content{
+        flex: 1;
+    }
+
+
+    .perfume .perfume__image{
+        background-image: url("images/perfume_desktop.jpg");
+    }
+
+    .perfume__content{
+        padding: 2rem;
+    }
+
+    .perfume__inner-container{
+        padding: 0;
+        justify-content: center;
+        flex: 1;
+    }
+
+    .perfume__title,
+    .perfume__description,
+    .perfume__price-container{
+        flex: 1;
+    }
+
+    .perfume__title{
+        margin-bottom: 24px;
+    }
+}
